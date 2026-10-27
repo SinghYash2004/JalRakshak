@@ -7,8 +7,8 @@
     <meta name="description" content="JalRakshak records pH, turbidity, TDS and temperature readings and keeps their history in one dashboard.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -46,6 +46,57 @@
     </div>
 </header>
 
+<!-- Full-screen live alert screen (current/latest reading only) -->
+<div id="currentAlertOverlay" class="current-alert-overlay" data-severity="warning" role="alertdialog" aria-modal="true" aria-labelledby="currentAlertHeading" aria-describedby="currentAlertSummary" hidden>
+    <div class="current-alert-panel">
+
+        <header class="current-alert-header">
+            <div class="current-alert-title-block">
+                <p class="current-alert-brand"><span class="current-alert-live" role="img" aria-label="Live monitoring active"></span>JalRakshak · Live monitoring</p>
+                <h2 id="currentAlertHeading" class="current-alert-title">Water Quality Alert</h2>
+                <p id="currentAlertSummary" class="current-alert-subtitle"></p>
+            </div>
+            <div class="current-alert-header-badges">
+                <span class="current-alert-status">
+                    <svg class="ca-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2 2.6 19.4a1 1 0 0 0 .9 1.5h17a1 1 0 0 0 .9-1.5L12 3.2z"/><path d="M12 9.6v4.8"/><circle cx="12" cy="17.2" r=".7" fill="currentColor"/></svg>
+                    <span id="currentAlertStatus">Alerts Detected</span>
+                </span>
+                <span id="currentAlertTestBadge" class="ca-badge ca-test" hidden>TEST MODE</span>
+            </div>
+        </header>
+
+        <div id="currentAlertBody" class="current-alert-body" tabindex="0" role="region" aria-label="Alert details">
+            <dl class="current-alert-stats">
+                <div class="ca-stat"><dt>Latest Reading ID</dt><dd id="caReadingId">--</dd></div>
+                <div class="ca-stat"><dt>Reading Recorded</dt><dd id="caRecorded">--</dd></div>
+                <div class="ca-stat"><dt>Alerts Detected</dt><dd id="caCount">--</dd></div>
+                <div class="ca-stat"><dt>Latest Alert Raised</dt><dd id="caRaised">--</dd></div>
+            </dl>
+
+            <p id="currentAlertFresh" class="current-alert-fresh" data-tone="unknown">
+                <svg class="ca-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                <span id="currentAlertFreshText"></span>
+            </p>
+
+            <section aria-labelledby="currentAlertListTitle">
+                <h3 id="currentAlertListTitle" class="current-alert-section-title">Alert details</h3>
+                <div id="currentAlertItems" class="current-alert-items"></div>
+            </section>
+
+            <p id="currentAlertMessage" class="current-alert-info">
+                <svg class="ca-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><circle cx="12" cy="7.9" r=".7" fill="currentColor"/></svg>
+                <span>These alerts are backend data-quality checks, not a water-safety assessment. Acknowledging this screen hides the alert screen only; the alert record remains in the database.</span>
+            </p>
+        </div>
+
+        <footer class="current-alert-actions">
+            <button id="dismissCurrentAlert" class="current-alert-dismiss" type="button">Acknowledge &amp; Return to Dashboard</button>
+            <p class="current-alert-hint">Press Esc to acknowledge</p>
+        </footer>
+
+    </div>
+</div>
+
 <main id="main">
     <!-- ===== Hero ===== -->
     <section class="hero" id="top">
@@ -53,7 +104,7 @@
             <div>
                 <span class="pill">IoT + Machine Learning project</span>
                 <h1>Keep a close watch on the water you depend on.</h1>
-                <p class="lead">JalRakshak records pH, turbidity, TDS and temperature from ESP32 sensors, keeps every reading in a database and shows the trends in one clear dashboard. ML-based contamination assessment is the next milestone.</p>
+                <p class="lead">JalRakshak records pH, turbidity, TDS and temperature from ESP32 sensors, keeps every reading in a database and shows the trends in one clear dashboard. ML-based classification is integrated; predictions are shown separately from data-quality alerts.</p>
                 <div class="cta">
                     <a class="btn" href="#monitor">Open dashboard</a>
                     <a class="btn line" href="#how">See how it works</a>
@@ -63,15 +114,21 @@
                 <div class="viz" role="img" aria-label="Illustration of a water drop surrounded by four sensor parameters">
                     <svg viewBox="0 0 400 400" aria-hidden="true">
                         <defs>
-                            <linearGradient id="dg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#67e8f9"/><stop offset=".6" stop-color="#0b8bd9"/><stop offset="1" stop-color="#0a3a63"/></linearGradient>
+                            <linearGradient id="dg" x1="0.15" y1="0" x2="0.85" y2="1"><stop offset="0" stop-color="#b6f3fb"/><stop offset=".35" stop-color="#2aa9e0"/><stop offset=".75" stop-color="#0b5da3"/><stop offset="1" stop-color="#062c52"/></linearGradient>
+                            <radialGradient id="dgl" cx=".32" cy=".3" r=".6"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+                            <radialGradient id="dgc" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#67e8f9" stop-opacity=".55"/><stop offset="1" stop-color="#67e8f9" stop-opacity="0"/></radialGradient>
                         </defs>
                         <circle class="ring" cx="200" cy="210" r="120" fill="none" stroke="#22d3ee" stroke-opacity=".35"/>
                         <circle class="ring r2" cx="200" cy="210" r="120" fill="none" stroke="#22d3ee" stroke-opacity=".35"/>
                         <circle cx="200" cy="210" r="150" fill="none" stroke="#fff" stroke-opacity=".08"/>
+                        <ellipse cx="200" cy="352" rx="96" ry="14" fill="url(#dgc)"/>
                         <g class="drop">
                             <path d="M200 70c52 62 88 104 88 150a88 88 0 0 1-176 0c0-46 36-88 88-150z" fill="url(#dg)"/>
+                            <path d="M200 70c52 62 88 104 88 150a88 88 0 0 1-176 0c0-46 36-88 88-150z" fill="url(#dgl)"/>
+                            <path d="M200 70c52 62 88 104 88 150a88 88 0 0 1-176 0c0-46 36-88 88-150z" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.5"/>
                             <path d="M140 230c20-18 40-18 60 0s40 18 60 0" fill="none" stroke="#fff" stroke-opacity=".85" stroke-width="7" stroke-linecap="round"/>
-                            <path d="M150 190c8-22 20-40 34-56" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="6" stroke-linecap="round"/>
+                            <path d="M150 190c8-22 20-40 34-56" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="6" stroke-linecap="round"/>
+                            <ellipse cx="236" cy="268" rx="26" ry="9" fill="#67e8f9" fill-opacity=".35" transform="rotate(-24 236 268)"/>
                         </g>
                     </svg>
                     <span class="chip-f c1"><i></i>pH</span>
@@ -92,7 +149,7 @@
                 <article class="card"><div class="tile"><svg class="ico"><use href="#i-flask"/></svg></div><h3>Four water parameters</h3><p>pH, turbidity, TDS and temperature are shown side by side for the latest reading.</p></article>
                 <article class="card"><div class="tile"><svg class="ico"><use href="#i-db"/></svg></div><h3>Saved history</h3><p>Every reading is stored in MySQL, so charts and the table show how values changed over time.</p></article>
                 <article class="card"><div class="tile"><svg class="ico"><use href="#i-clock"/></svg></div><h3>Data freshness</h3><p>Old readings are never called live. The dashboard tells you when data may be stale.</p></article>
-                <article class="card"><div class="tile"><svg class="ico"><use href="#i-shield"/></svg></div><h3>Honest assessment</h3><p>No safe or contaminated label is shown until a trained ML model is connected.</p></article>
+                <article class="card"><div class="tile"><svg class="ico"><use href="#i-shield"/></svg></div><h3>Honest assessment</h3><p>The dashboard displays a saved model prediction when one is available; it is not a safety certification.</p></article>
                 <article class="card"><div class="tile"><svg class="ico"><use href="#i-wave"/></svg></div><h3>Clearly labelled demo mode</h3><p>Present without hardware using simulated data that is never saved or mixed with real readings.</p></article>
             </div>
         </div>
@@ -107,7 +164,7 @@
                 <li><h3>Send</h3><p>The reading is posted to the Spring Boot REST API.</p></li>
                 <li><h3>Store</h3><p>The API saves it with a timestamp in MySQL.</p></li>
                 <li><h3>View</h3><p>This dashboard loads the saved readings and refreshes every 5 seconds.</p></li>
-                <li><h3>Assess</h3><p>A trained ML model will rate contamination risk. <span class="tag">Not built yet</span></p></li>
+                <li><h3>Assess</h3><p>The backend stores a dataset-based ML prediction with a reading when all inputs are valid. <span class="tag">Prototype</span></p></li>
             </ol>
         </div>
     </section>
@@ -130,6 +187,15 @@
                 <span id="errorText"></span>
                 <button id="retryBtn" class="btn small">Retry</button>
             </div>
+
+            <section id="alertStatus" class="alert-status" data-state="idle" aria-live="polite" aria-label="Live alert status for the latest reading">
+                <span id="alertStatusIcon" class="alert-status-icon" aria-hidden="true">•</span>
+                <div class="alert-status-body">
+                    <p id="alertStatusTitle" class="alert-status-title">Checking for alerts…</p>
+                    <p id="alertStatusText" class="alert-status-text">Waiting for the first response from the backend.</p>
+                </div>
+                <button id="reopenAlertBtn" class="btn" type="button" hidden>View alert screen</button>
+            </section>
 
             <div class="grid metrics" id="cards">
                 <article class="card metric" data-key="ph">
@@ -162,7 +228,7 @@
                 <section class="card assess" id="assessment" aria-labelledby="assessTitle">
                     <h3 id="assessTitle">Water Quality Assessment</h3>
                     <p class="assess-state" id="assessState">ML prediction not available</p>
-                    <p class="note">Machine-learning inference will be enabled after model training and integration. A reading alone does not prove water is safe or contaminated.</p>
+                    <p class="note">Shows the saved model prediction for the latest reading when available. This is a dataset-based ML prediction, not a drinking-water safety certification.</p>
                 </section>
                 <section class="card" aria-labelledby="stTitle">
                     <h3 id="stTitle">Connection and data status</h3>
@@ -196,7 +262,7 @@
                 <p class="note" id="tableMsg">Loading readings…</p>
                 <div class="table-wrap">
                     <table>
-                        <thead><tr><th scope="col">ID</th><th scope="col">Recorded at</th><th scope="col">pH</th><th scope="col">Turbidity</th><th scope="col">TDS</th><th scope="col">Temp (°C)</th></tr></thead>
+                        <thead><tr><th scope="col">ID</th><th scope="col">Recorded at</th><th scope="col">pH</th><th scope="col">Turbidity</th><th scope="col">TDS</th><th scope="col">Temp (°C)</th><th scope="col">ML prediction</th></tr></thead>
                         <tbody id="tableBody"></tbody>
                     </table>
                 </div>
@@ -210,22 +276,41 @@
             <div class="sec-head">
                 <div>
                     <h2 id="alertTitle">Alert history</h2>
-                    <p class="lead">Data-quality alerts saved by the backend. These alerts do not determine whether water is safe to drink.</p>
+                    <p class="lead">Historical data-quality alerts saved by the backend. TEST MODE records are shown separately from alerts linked to the latest reading. Neither alert status nor an ML prediction certifies drinking-water safety.</p>
                 </div>
                 <button id="alertsRefreshBtn" class="btn">Refresh alerts</button>
             </div>
             <div id="alertsInfo" class="banner" role="status">Loading alert history…</div>
             <div id="alertsList" class="alert-list" aria-live="polite"></div>
-            <p class="note alert-footnote">pH, turbidity and TDS quality thresholds are intentionally not evaluated yet because the ESP32 firmware currently sends voltage/raw values for these parameters. Calibrate the sensors and confirm units before enabling water-quality rules.</p>
+            <p class="note alert-footnote">Important: pH, turbidity and TDS thresholds are not yet enabled because sensor calibration and units need confirmation. Some records may be test data or uncalibrated raw values. Validate sensor readings and the model against reliable reference measurements before using this prototype for real water-safety decisions.</p>
         </div>
     </section>
 
     <!-- ===== About ===== -->
+    <!-- ===== About ===== -->
     <section class="sec alt" id="about" aria-labelledby="aboutTitle">
         <div class="wrap about">
             <h2 id="aboutTitle">About the project</h2>
-            <p>JalRakshak is a college project: an ESP32 with pH, turbidity, TDS and DS18B20 temperature sensors will post readings to a Spring Boot REST API backed by MySQL. This dashboard reads those saved records.</p>
-            <p class="note">Status: backend and database working. ESP32 not continuously connected. ML model not trained yet.</p>
+
+            <p>
+                JalRakshak is a college project that uses an ESP32 with pH,
+                turbidity, TDS and DS18B20 temperature sensors to collect
+                water-quality readings. The readings are sent to a Spring Boot
+                REST API and stored in MySQL. The dashboard displays saved
+                readings, historical trends and dataset-based ML predictions.
+            </p>
+
+            <p class="note">
+                <strong>Project status:</strong> Spring Boot API, MySQL persistence
+                and dataset-based ML prediction integration are working in the
+                prototype. Continuous ESP32 connectivity, sensor calibration
+                and real-world model validation are still pending.
+            </p>
+
+            <p class="note">
+                <strong>Important:</strong> ML predictions are experimental and
+                should not be treated as certification that water is safe to drink.
+            </p>
         </div>
     </section>
 </main>
@@ -238,6 +323,6 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-<script src="app.js"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@ package com.waterquality.water_quality_dashboard.serial;
 
 import com.fazecast.jSerialComm.SerialPort;
 import com.waterquality.water_quality_dashboard.model.WaterReading;
-import com.waterquality.water_quality_dashboard.repository.WaterReadingRepository;
+import com.waterquality.water_quality_dashboard.service.WaterReadingService;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.springframework.stereotype.Component;
@@ -22,7 +22,7 @@ public class Esp32SerialReader {
     private static final int RECONNECT_DELAY_MS = 2000;
     private static final long SAVE_INTERVAL_MS = 5000;
 
-    private final WaterReadingRepository repository;
+    private final WaterReadingService readingService;
     private final ObjectMapper objectMapper;
 
     private volatile boolean running = true;
@@ -32,9 +32,9 @@ public class Esp32SerialReader {
     private long lastSavedTime = 0;
 
     public Esp32SerialReader(
-            WaterReadingRepository repository,
+            WaterReadingService readingService,
             ObjectMapper objectMapper) {
-        this.repository = repository;
+        this.readingService = readingService;
         this.objectMapper = objectMapper;
     }
 
@@ -68,17 +68,14 @@ public class Esp32SerialReader {
             try {
                 if (!port.openPort()) {
                     System.err.println(
-                            "Cannot open " + PORT_NAME
-                                    + ". Retrying..."
+                            "Cannot open " + PORT_NAME + ". Retrying..."
                     );
 
                     pauseBeforeRetry();
                     continue;
                 }
 
-                System.out.println(
-                        "ESP32 connected on " + PORT_NAME
-                );
+                System.out.println("ESP32 connected on " + PORT_NAME);
 
                 try (BufferedReader reader = new BufferedReader(
                         new InputStreamReader(port.getInputStream()))) {
@@ -120,12 +117,15 @@ public class Esp32SerialReader {
                                             WaterReading.class
                                     );
 
-                            repository.save(reading);
+                            WaterReading saved =
+                                    readingService.saveReading(reading);
 
                             lastSavedTime = System.currentTimeMillis();
 
                             System.out.println(
-                                    "Reading saved to MySQL: " + json
+                                    "Reading saved and processed: ID="
+                                            + saved.getId()
+                                            + ", data=" + json
                             );
 
                         } catch (Exception e) {
@@ -140,8 +140,7 @@ public class Esp32SerialReader {
             } catch (Exception e) {
                 if (running) {
                     System.err.println(
-                            "Serial connection error: "
-                                    + e.getMessage()
+                            "Serial connection error: " + e.getMessage()
                     );
                 }
 

@@ -1,3 +1,4 @@
+
 package com.waterquality.water_quality_dashboard.model;
 
 import jakarta.persistence.*;
@@ -15,6 +16,9 @@ public class WaterReading {
     private Double turbidity;
     private Double tds;
     private Double temperature;
+
+    @Column(name = "ml_prediction", length = 20)
+    private String mlPrediction;
 
     private LocalDateTime recordedAt;
 
@@ -61,6 +65,14 @@ public class WaterReading {
 
     public void setTemperature(Double temperature) {
         this.temperature = temperature;
+    }
+
+    public String getMlPrediction() {
+        return mlPrediction;
+    }
+
+    public void setMlPrediction(String mlPrediction) {
+        this.mlPrediction = mlPrediction;
     }
 
     public LocalDateTime getRecordedAt() {

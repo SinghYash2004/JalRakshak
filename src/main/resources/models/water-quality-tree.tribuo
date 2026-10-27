@@ -1,0 +1,273 @@
+ org.tribuo.common.tree.TreeModelÜ—
+5type.googleapis.com/tribuo.common.tree.TreeModelProto¡—
+Žh
+	cart-treeùa
+åtreemodel-0 org.tribuo.common.tree.TreeModel"%org.tribuo.provenance.ModelProvenance*
+instance-values*
+tribuo-version*
+java-version*
+trainer*
+os-arch*
+
+trained-at*
+os-name*
+dataset*
+
+class-name	
+õ
+mutabledataset-1org.tribuo.MutableDataset"'org.tribuo.provenance.DatasetProvenance*
+num-features*
+num-examples*
+num-outputs*
+tribuo-version*
+
+datasource*
+transformations*
+is-sequence*
+is-dense*
+
+class-name
+ücartclassificationtrainer-29org.tribuo.classification.dtree.CARTClassificationTrainer"0org.tribuo.provenance.impl.TrainerProvenanceImpl*
+maxDepth*
+impurity*
+useRandomSplitPoints*
+minImpurityDecrease*
+seed*
+tribuo-version*
+fractionFeaturesInSplit*
+train-invocation-count*
+is-sequence*
+minChildWeight*
+host-short-name*
+
+class-name 
+×!traintestsplitter-3'org.tribuo.evaluation.TrainTestSplitter"Aorg.tribuo.evaluation.TrainTestSplitter$SplitDataSourceProvenance*
+train-proportion"*
+seed#*
+size$*
+
+source%*
+
+class-name&*
+is-train'
+³(giniindex-42org.tribuo.classification.dtree.impurity.GiniIndex"Icom.oracle.labs.mlrg.olcut.provenance.impl.ConfiguredObjectProvenanceImpl*
+host-short-name)*
+
+class-name*
+Í+csvdatasource-5!org.tribuo.data.csv.CSVDataSource"9org.tribuo.data.csv.CSVDataSource$CSVDataSourceProvenance*
+resource-hash,*
+headers-*
+rowProcessor.*
+file-modified-time/*	
+quote0*
+outputRequired1*
+datasource-creation-time2*
+outputFactory3*
+	separator4*
+host-short-name5*
+
+class-name6*
+dataPath7
+×8rowprocessor-6%org.tribuo.data.columnar.RowProcessor"Icom.oracle.labs.mlrg.olcut.provenance.impl.ConfiguredObjectProvenanceImpl*
+metadataExtractors9*
+fieldProcessorList:*
+featureProcessors?*
+responseProcessor@*
+weightExtractorA*
+replaceNewlinesWithSpacesB*
+regexMappingProcessorsC*
+host-short-nameD*
+
+class-nameE
+ŠFlabelfactory-14&org.tribuo.classification.LabelFactory"=org.tribuo.classification.LabelFactory$LabelFactoryProvenance*
+
+class-nameG
+€Hdoublefieldprocessor-8>org.tribuo.data.columnar.processors.field.DoubleFieldProcessor"Icom.oracle.labs.mlrg.olcut.provenance.impl.ConfiguredObjectProvenanceImpl*
+	fieldNameI*
+onlyFieldNameJ*
+throwOnInvalidK*
+host-short-nameL*
+
+class-nameM
+€Ndoublefieldprocessor-9>org.tribuo.data.columnar.processors.field.DoubleFieldProcessor"Icom.oracle.labs.mlrg.olcut.provenance.impl.ConfiguredObjectProvenanceImpl*
+	fieldNameO*
+onlyFieldNameP*
+throwOnInvalidQ*
+host-short-nameR*
+
+class-nameS
+Tdoublefieldprocessor-10>org.tribuo.data.columnar.processors.field.DoubleFieldProcessor"Icom.oracle.labs.mlrg.olcut.provenance.impl.ConfiguredObjectProvenanceImpl*
+	fieldNameU*
+onlyFieldNameV*
+throwOnInvalidW*
+host-short-nameX*
+
+class-nameY
+Zdoublefieldprocessor-11>org.tribuo.data.columnar.processors.field.DoubleFieldProcessor"Icom.oracle.labs.mlrg.olcut.provenance.impl.ConfiguredObjectProvenanceImpl*
+	fieldName[*
+onlyFieldName\*
+throwOnInvalid]*
+host-short-name^*
+
+class-name_
+©`fieldresponseprocessor-12Corg.tribuo.data.columnar.processors.response.FieldResponseProcessor"Icom.oracle.labs.mlrg.olcut.provenance.impl.ConfiguredObjectProvenanceImpl*
+	uppercasea*
+
+fieldNamesb*
+defaultValuesd*
+displayFieldf*
+outputFactoryg*
+host-short-nameh*
+
+class-namei
+“jfieldextractor-13'org.tribuo.data.columnar.FieldExtractor"Ccom.oracle.labs.mlrg.olcut.provenance.impl.NullConfiguredProvenance*
+
+class-namek\tribuo-version4.3.2*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenance]java-version26.0.2.1*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenance\trainercartclassificationtrainer-2*0org.tribuo.provenance.impl.TrainerProvenanceImpl0Uos-archamd64*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenancex
+trained-at#2026-10-23T11:25:00.578068200+05:30*Ccom.oracle.labs.mlrg.olcut.provenance.primitives.DateTimeProvenanceZos-name
+Windows 11*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenanceHdatasetmutabledataset-1*'org.tribuo.provenance.DatasetProvenance0s	
+class-name org.tribuo.common.tree.TreeModel*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenanceSnum-features4*>com.oracle.labs.mlrg.olcut.provenance.primitives.IntProvenanceWnum-examples80640*>com.oracle.labs.mlrg.olcut.provenance.primitives.IntProvenanceRnum-outputs2*>com.oracle.labs.mlrg.olcut.provenance.primitives.IntProvenance\tribuo-version4.3.2*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenanceh
+datasourcetraintestsplitter-3*Aorg.tribuo.evaluation.TrainTestSplitter$SplitDataSourceProvenance0Zis-sequencefalse*Bcom.oracle.labs.mlrg.olcut.provenance.primitives.BooleanProvenanceVis-densetrue*Bcom.oracle.labs.mlrg.olcut.provenance.primitives.BooleanProvenancel
+class-nameorg.tribuo.MutableDataset*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenanceXmaxDepth
+2147483647*>com.oracle.labs.mlrg.olcut.provenance.primitives.IntProvenancefimpurityginiindex-4*Icom.oracle.labs.mlrg.olcut.provenance.impl.ConfiguredObjectProvenanceImpl0cuseRandomSplitPointsfalse*Bcom.oracle.labs.mlrg.olcut.provenance.primitives.BooleanProvenance^minImpurityDecrease0.0*@com.oracle.labs.mlrg.olcut.provenance.primitives.FloatProvenancePseed12345*?com.oracle.labs.mlrg.olcut.provenance.primitives.LongProvenance\tribuo-version4.3.2*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenancebfractionFeaturesInSplit1.0*@com.oracle.labs.mlrg.olcut.provenance.primitives.FloatProvenance]train-invocation-count0*>com.oracle.labs.mlrg.olcut.provenance.primitives.IntProvenanceZis-sequencefalse*Bcom.oracle.labs.mlrg.olcut.provenance.primitives.BooleanProvenanceYminChildWeight5.0*@com.oracle.labs.mlrg.olcut.provenance.primitives.FloatProvenance_host-short-nameTrainer*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenanceŒ 
+class-name9org.tribuo.classification.dtree.CARTClassificationTrainer*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenance\"train-proportion0.8*Acom.oracle.labs.mlrg.olcut.provenance.primitives.DoubleProvenanceM#seed42*?com.oracle.labs.mlrg.olcut.provenance.primitives.LongProvenanceP$size100800*>com.oracle.labs.mlrg.olcut.provenance.primitives.IntProvenanceX%sourcecsvdatasource-5*9org.tribuo.data.csv.CSVDataSource$CSVDataSourceProvenance0z&
+class-name'org.tribuo.evaluation.TrainTestSplitter*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenanceV'is-traintrue*Bcom.oracle.labs.mlrg.olcut.provenance.primitives.BooleanProvenancee)host-short-nameLabelImpurity*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenance…*
+class-name2org.tribuo.classification.dtree.impurity.GiniIndex*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenanceœ,resource-hash@90F9C7CB7404FB69B655EE27293C91B82EE3A346712E06035F8259393835A04A"SHA256*?com.oracle.labs.mlrg.olcut.provenance.primitives.HashProvenancem.rowProcessorrowprocessor-6*Icom.oracle.labs.mlrg.olcut.provenance.impl.ConfiguredObjectProvenanceImpl0z/file-modified-time2026-10-23T03:08:11.153+05:30*Ccom.oracle.labs.mlrg.olcut.provenance.primitives.DateTimeProvenanceM0quote"*?com.oracle.labs.mlrg.olcut.provenance.primitives.CharProvenance\1outputRequiredtrue*Bcom.oracle.labs.mlrg.olcut.provenance.primitives.BooleanProvenance†2datasource-creation-time#2026-10-23T11:24:59.520881700+05:30*Ccom.oracle.labs.mlrg.olcut.provenance.primitives.DateTimeProvenancec3outputFactorylabelfactory-14*=org.tribuo.classification.LabelFactory$LabelFactoryProvenance0Q4	separator,*?com.oracle.labs.mlrg.olcut.provenance.primitives.CharProvenanceb5host-short-name
+DataSource*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenancet6
+class-name!org.tribuo.data.csv.CSVDataSource*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenance‹7dataPath<C:\PROJECTS\jalrakshak-ml\dataset\water_quality_dataset1.csv*?com.oracle.labs.mlrg.olcut.provenance.primitives.FileProvenance{;fieldProcessorListdoublefieldprocessor-8*Icom.oracle.labs.mlrg.olcut.provenance.impl.ConfiguredObjectProvenanceImpl0{<fieldProcessorListdoublefieldprocessor-9*Icom.oracle.labs.mlrg.olcut.provenance.impl.ConfiguredObjectProvenanceImpl0|=fieldProcessorListdoublefieldprocessor-10*Icom.oracle.labs.mlrg.olcut.provenance.impl.ConfiguredObjectProvenanceImpl0|>fieldProcessorListdoublefieldprocessor-11*Icom.oracle.labs.mlrg.olcut.provenance.impl.ConfiguredObjectProvenanceImpl0}@responseProcessorfieldresponseprocessor-12*Icom.oracle.labs.mlrg.olcut.provenance.impl.ConfiguredObjectProvenanceImpl0mAweightExtractorfieldextractor-13*Ccom.oracle.labs.mlrg.olcut.provenance.impl.NullConfiguredProvenance0gBreplaceNewlinesWithSpacestrue*Bcom.oracle.labs.mlrg.olcut.provenance.primitives.BooleanProvenancedDhost-short-nameRowProcessor*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenancexE
+class-name%org.tribuo.data.columnar.RowProcessor*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenanceyG
+class-name&org.tribuo.classification.LabelFactory*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenanceTI	fieldNamepH*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenance[JonlyFieldNametrue*Bcom.oracle.labs.mlrg.olcut.provenance.primitives.BooleanProvenance\KthrowOnInvalidtrue*Bcom.oracle.labs.mlrg.olcut.provenance.primitives.BooleanProvenancefLhost-short-nameFieldProcessor*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenance‘M
+class-name>org.tribuo.data.columnar.processors.field.DoubleFieldProcessor*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenance_O	fieldNameTemperature_C*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenance[PonlyFieldNametrue*Bcom.oracle.labs.mlrg.olcut.provenance.primitives.BooleanProvenance\QthrowOnInvalidtrue*Bcom.oracle.labs.mlrg.olcut.provenance.primitives.BooleanProvenancefRhost-short-nameFieldProcessor*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenance‘S
+class-name>org.tribuo.data.columnar.processors.field.DoubleFieldProcessor*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenanceYU	fieldNameTDS_ppm*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenance[VonlyFieldNametrue*Bcom.oracle.labs.mlrg.olcut.provenance.primitives.BooleanProvenance\WthrowOnInvalidtrue*Bcom.oracle.labs.mlrg.olcut.provenance.primitives.BooleanProvenancefXhost-short-nameFieldProcessor*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenance‘Y
+class-name>org.tribuo.data.columnar.processors.field.DoubleFieldProcessor*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenance_[	fieldNameTurbidity_NTU*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenance[\onlyFieldNametrue*Bcom.oracle.labs.mlrg.olcut.provenance.primitives.BooleanProvenance\]throwOnInvalidtrue*Bcom.oracle.labs.mlrg.olcut.provenance.primitives.BooleanProvenancef^host-short-nameFieldProcessor*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenance‘_
+class-name>org.tribuo.data.columnar.processors.field.DoubleFieldProcessor*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenanceXa	uppercasefalse*Bcom.oracle.labs.mlrg.olcut.provenance.primitives.BooleanProvenanceXc
+fieldNamesLabel*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenanceTedefaultValues*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenance[fdisplayFieldfalse*Bcom.oracle.labs.mlrg.olcut.provenance.primitives.BooleanProvenancecgoutputFactorylabelfactory-14*=org.tribuo.classification.LabelFactory$LabelFactoryProvenance0ihhost-short-nameResponseProcessor*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenance–i
+class-nameCorg.tribuo.data.columnar.processors.response.FieldResponseProcessor*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenancezk
+class-name'org.tribuo.data.columnar.FieldExtractor*Acom.oracle.labs.mlrg.olcut.provenance.primitives.StringProvenanceC""-"9":;<=>"?"bc"de"ëorg.tribuo.ImmutableFeatureMapÈ
+8type.googleapis.com/tribuo.core.ImmutableFeatureMapProto‹
+}org.tribuo.RealIDInfod
+/type.googleapis.com/tribuo.core.RealIDInfoProto1
+TDS_ppm€öQ33333ì¥@Yš™™™™™<@a¤‰Ð;€˜…@iÃÕú¥TXB
+…org.tribuo.RealIDInfol
+/type.googleapis.com/tribuo.core.RealIDInfoProto9
+Turbidity_NTUŒäQ     0R@Y{®Gáz„?a#RzÞJ'@iì=Z½á\A
+…org.tribuo.RealIDInfol
+/type.googleapis.com/tribuo.core.RealIDInfoProto9
+Temperature_C€öQÃõ(\‚?@YÂõ(\0@aÛÏ‚á8@iº$f?VÇ!A
+zorg.tribuo.RealIDInfoa
+/type.googleapis.com/tribuo.core.RealIDInfoProto.
+pH€öQìQ¸…ë#@Y\Âõ(\@a-Ž¹<<_@iÉð³¾<é@*,org.tribuo.classification.ImmutableLabelInfo_
+Atype.googleapis.com/tribuo.classification.ImmutableLabelInfoProto
+Unsafe
+Safeú¸†½ 24.3.2}org.tribuo.common.tree.LeafNodeZ
+5type.googleapis.com/tribuo.common.tree.SplitNodeProto!ÿÿÿÿÿÿÿÿÿ 143333[i@9Z+eKAâÚ?torg.tribuo.common.tree.LeafNodeQ
+5type.googleapis.com/tribuo.common.tree.SplitNodeProto 1ÌÌÌÌÌôi@9I„ýÊéa?vorg.tribuo.common.tree.LeafNodeS
+5type.googleapis.com/tribuo.common.tree.SplitNodeProto (1R¸…ëÑ@9*‹ìi©€?vorg.tribuo.common.tree.LeafNodeS
+5type.googleapis.com/tribuo.common.tree.SplitNodeProto 1ÌÌÌÌÌ$j@9Éãé"ø4?xorg.tribuo.common.tree.LeafNodeU
+5type.googleapis.com/tribuo.common.tree.SplitNodeProto	 
+(1Ház®G@9¿4º…ŠøÛ?´org.tribuo.common.tree.LeafNode
+4type.googleapis.com/tribuo.common.tree.LeafNodeProto×"lorg.tribuo.classification.LabelI
+4type.googleapis.com/tribuo.classification.LabelProto
+Unsafe      ð?*v
+Unsafelorg.tribuo.classification.LabelI
+4type.googleapis.com/tribuo.classification.LabelProto
+Unsafe      ð?*i
+Safeaorg.tribuo.classification.Label>
+4type.googleapis.com/tribuo.classification.LabelProto
+Safe0xorg.tribuo.common.tree.LeafNodeU
+5type.googleapis.com/tribuo.common.tree.SplitNodeProto (1ffffff@9œÀžÿG·%?vorg.tribuo.common.tree.LeafNodeS
+5type.googleapis.com/tribuo.common.tree.SplitNodeProto 1š™™™™aj@9š¦9š¨?xorg.tribuo.common.tree.LeafNodeU
+5type.googleapis.com/tribuo.common.tree.SplitNodeProto (1{®Gáz@9Kç´‚PÎ?´org.tribuo.common.tree.LeafNode
+4type.googleapis.com/tribuo.common.tree.LeafNodeProto×	"lorg.tribuo.classification.LabelI
+4type.googleapis.com/tribuo.classification.LabelProto
+Unsafe      ð?*v
+Unsafelorg.tribuo.classification.LabelI
+4type.googleapis.com/tribuo.classification.LabelProto
+Unsafe      ð?*i
+Safeaorg.tribuo.classification.Label>
+4type.googleapis.com/tribuo.classification.LabelProto
+Safe0²org.tribuo.common.tree.LeafNodeŽ
+4type.googleapis.com/tribuo.common.tree.LeafNodeProtoÕ
+"jorg.tribuo.classification.LabelG
+4type.googleapis.com/tribuo.classification.LabelProto
+Safe      ð?*m
+Unsafecorg.tribuo.classification.Label@
+4type.googleapis.com/tribuo.classification.LabelProto
+Unsafe*r
+Safejorg.tribuo.classification.LabelG
+4type.googleapis.com/tribuo.classification.LabelProto
+Safe      ð?0vorg.tribuo.common.tree.LeafNodeS
+5type.googleapis.com/tribuo.common.tree.SplitNodeProto 1ÍÌÌÌÌüg@9ÿÛ#åÑ´¶?²org.tribuo.common.tree.LeafNodeŽ
+4type.googleapis.com/tribuo.common.tree.LeafNodeProtoÕ"jorg.tribuo.classification.LabelG
+4type.googleapis.com/tribuo.classification.LabelProto
+Safe      ð?*m
+Unsafecorg.tribuo.classification.Label@
+4type.googleapis.com/tribuo.classification.LabelProto
+Unsafe*r
+Safejorg.tribuo.classification.LabelG
+4type.googleapis.com/tribuo.classification.LabelProto
+Safe      ð?0´org.tribuo.common.tree.LeafNode
+4type.googleapis.com/tribuo.common.tree.LeafNodeProto×"lorg.tribuo.classification.LabelI
+4type.googleapis.com/tribuo.classification.LabelProto
+Unsafe      ð?*v
+Unsafelorg.tribuo.classification.LabelI
+4type.googleapis.com/tribuo.classification.LabelProto
+Unsafe      ð?*i
+Safeaorg.tribuo.classification.Label>
+4type.googleapis.com/tribuo.classification.LabelProto
+Safe0xorg.tribuo.common.tree.LeafNodeU
+5type.googleapis.com/tribuo.common.tree.SplitNodeProto (1¤p=
+×£@9ÿÛ#åÑ´¶?´org.tribuo.common.tree.LeafNode
+4type.googleapis.com/tribuo.common.tree.LeafNodeProto×"lorg.tribuo.classification.LabelI
+4type.googleapis.com/tribuo.classification.LabelProto
+Unsafe      ð?*v
+Unsafelorg.tribuo.classification.LabelI
+4type.googleapis.com/tribuo.classification.LabelProto
+Unsafe      ð?*i
+Safeaorg.tribuo.classification.Label>
+4type.googleapis.com/tribuo.classification.LabelProto
+Safe0²org.tribuo.common.tree.LeafNodeŽ
+4type.googleapis.com/tribuo.common.tree.LeafNodeProtoÕ"jorg.tribuo.classification.LabelG
+4type.googleapis.com/tribuo.classification.LabelProto
+Safe      ð?*m
+Unsafecorg.tribuo.classification.Label@
+4type.googleapis.com/tribuo.classification.LabelProto
+Unsafe*r
+Safejorg.tribuo.classification.LabelG
+4type.googleapis.com/tribuo.classification.LabelProto
+Safe      ð?0´org.tribuo.common.tree.LeafNode
+4type.googleapis.com/tribuo.common.tree.LeafNodeProto×"lorg.tribuo.classification.LabelI
+4type.googleapis.com/tribuo.classification.LabelProto
+Unsafe      ð?*v
+Unsafelorg.tribuo.classification.LabelI
+4type.googleapis.com/tribuo.classification.LabelProto
+Unsafe      ð?*i
+Safeaorg.tribuo.classification.Label>
+4type.googleapis.com/tribuo.classification.LabelProto
+Safe0²org.tribuo.common.tree.LeafNodeŽ
+4type.googleapis.com/tribuo.common.tree.LeafNodeProtoÕ"jorg.tribuo.classification.LabelG
+4type.googleapis.com/tribuo.classification.LabelProto
+Safe      ð?*m
+Unsafecorg.tribuo.classification.Label@
+4type.googleapis.com/tribuo.classification.LabelProto
+Unsafe*r
+Safejorg.tribuo.classification.LabelG
+4type.googleapis.com/tribuo.classification.LabelProto
+Safe      ð?0´org.tribuo.common.tree.LeafNode
+4type.googleapis.com/tribuo.common.tree.LeafNodeProto×"lorg.tribuo.classification.LabelI
+4type.googleapis.com/tribuo.classification.LabelProto
+Unsafe      ð?*v
+Unsafelorg.tribuo.classification.LabelI
+4type.googleapis.com/tribuo.classification.LabelProto
+Unsafe      ð?*i
+Safeaorg.tribuo.classification.Label>
+4type.googleapis.com/tribuo.classification.LabelProto
+Safe0²org.tribuo.common.tree.LeafNodeŽ
+4type.googleapis.com/tribuo.common.tree.LeafNodeProtoÕ"jorg.tribuo.classification.LabelG
+4type.googleapis.com/tribuo.classification.LabelProto
+Safe      ð?*m
+Unsafecorg.tribuo.classification.Label@
+4type.googleapis.com/tribuo.classification.LabelProto
+Unsafe*r
+Safejorg.tribuo.classification.LabelG
+4type.googleapis.com/tribuo.classification.LabelProto
+Safe      ð?0
