@@ -175,7 +175,6 @@ public class Esp32SerialReader {
             running = false;
         }
     }
-
     @PreDestroy
     public void stopReader() {
         running = false;
