@@ -167,6 +167,15 @@ public class Esp32SerialReader {
                 && message.toLowerCase().contains("timed out");
     }
 
+    private void pauseBeforeRetry() {
+        try {
+            Thread.sleep(RECONNECT_DELAY_MS);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            running = false;
+        }
+    }
+
 
     @PreDestroy
     public void stopReader() {
